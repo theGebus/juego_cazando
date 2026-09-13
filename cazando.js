@@ -23,13 +23,18 @@ function iniciarJuego(){
 //DIbujo de gato 
 
 function graficarGato(){
-ctx.fillStyle="black";
-ctx.fillRect(gatoX,gatoY, ancho_Gato, alto_Gato);
+    graficarRectangulo(gatoX,gatoY,ancho_Gato,alto_Gato,"black");
 }
 
 //dibujo de comida del Gato
 
 function graficarComida(){
-    ctx.fillStyle="orange";
-    ctx.fillRect(comidaX, comidaY, ancho_Comida, alto_Comida); 
+    graficarRectangulo(comidaX,comidaY,ancho_Comida,alto_Comida,"orange")
+}
+
+//Creo una funcion para graficar rectangulos
+
+function graficarRectangulo (x,y,ancho,alto,color){
+    ctx.fillStyle = color;
+    ctx.fillRect(x,y,ancho,alto);
 }
