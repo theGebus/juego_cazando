@@ -60,3 +60,24 @@ function moverPersonajeIzquierda(){
     gatoX=Math.max(0,gatoX-10);
     dibujarObjetos();
 }
+
+//mover el gato a la Derecha
+
+function moverPersonajeDerecha(){
+    gatoX=Math.max(0,gatoX+10);
+    dibujarObjetos();
+}
+
+//Mover gato hacia arriba
+
+function moverPersonajeArriba(){
+    gatoY=Math.max(0,gatoY-10);
+    dibujarObjetos();
+}
+
+//Mover gato hacia abajo
+
+function moverPersonajeAbajo(){
+    gatoY=Math.min(canvas.height-alto_Gato,gatoY+10);
+    dibujarObjetos();
+}
