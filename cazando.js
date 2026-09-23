@@ -20,6 +20,15 @@ function iniciarJuego(){
     graficarGato();
     graficarComida();
 }
+
+//LLamar funciones 
+
+function dibujarObjetos(){
+    limpiarCanvas();
+    graficarComida();
+    graficarGato();
+}
+
 //DIbujo de gato 
 
 function graficarGato(){
@@ -37,4 +46,17 @@ function graficarComida(){
 function graficarRectangulo (x,y,ancho,alto,color){
     ctx.fillStyle = color;
     ctx.fillRect(x,y,ancho,alto);
+}
+
+//Limpiar el canvas
+
+function limpiarCanvas(){
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+}
+
+//Mover el gato a la izquierda
+
+function moverPersonajeIzquierda(){
+    gatoX=Math.max(0,gatoX-10);
+    dibujarObjetos();
 }
