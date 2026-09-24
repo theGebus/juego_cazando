@@ -59,13 +59,15 @@ function limpiarCanvas(){
 function moverPersonajeIzquierda(){
     gatoX=Math.max(0,gatoX-10);
     dibujarObjetos();
+    detectarColision(); 
 }
 
 //mover el gato a la Derecha
 
 function moverPersonajeDerecha(){
-    gatoX=Math.max(0,gatoX+10);
+    gatoX=Math.min(canvas.width-ancho_Gato,gatoX+10);
     dibujarObjetos();
+    detectarColision(); 
 }
 
 //Mover gato hacia arriba
@@ -73,6 +75,7 @@ function moverPersonajeDerecha(){
 function moverPersonajeArriba(){
     gatoY=Math.max(0,gatoY-10);
     dibujarObjetos();
+    detectarColision(); 
 }
 
 //Mover gato hacia abajo
@@ -80,4 +83,19 @@ function moverPersonajeArriba(){
 function moverPersonajeAbajo(){
     gatoY=Math.min(canvas.height-alto_Gato,gatoY+10);
     dibujarObjetos();
+    detectarColision();  
 }
+
+//Deatectar colision
+
+function detectarColision(){
+    if(gatoX + ancho_Gato >= comidaX &&
+        gatoX <= comidaX+ancho_Comida &&
+        gatoY + alto_Gato >= comidaY &&
+        gatoY <= comidaY+alto_Gato
+    ){
+        alert("ganaste")
+    }
+}
+
+    
