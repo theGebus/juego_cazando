@@ -15,8 +15,13 @@ let gatoY=425;
 let comidaX=460;
 let comidaY=460;
 
+//Variables Puntaje y tiempo
+
+let puntaje=0;
+
 
 function iniciarJuego(){
+    comidaRandom();
     graficarGato();
     graficarComida();
 }
@@ -92,10 +97,20 @@ function detectarColision(){
     if(gatoX + ancho_Gato >= comidaX &&
         gatoX <= comidaX+ancho_Comida &&
         gatoY + alto_Gato >= comidaY &&
-        gatoY <= comidaY+alto_Gato
+        gatoY <= comidaY+alto_Comida
     ){
-        alert("ganaste")
+        comidaRandom();
+        puntaje=puntaje+1;
+        mostrarEnSpan("puntos",puntaje)
     }
+}
+
+//Poner comida en random
+
+function comidaRandom(){
+    comidaX = generarAleatorio(0,canvas.width-ancho_Comida)
+    comidaY = generarAleatorio(0,canvas.height-alto_Comida)
+    dibujarObjetos();
 }
 
     
