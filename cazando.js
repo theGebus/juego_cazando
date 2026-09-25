@@ -27,11 +27,10 @@ let limpiarTiempo;
 
 
 function iniciarJuego(){
-    limpiarTiempo=setInterval(restarTiempo,resTiempo)
+    clearInterval(limpiarTiempo)
+    mostrarEnSpan("tiempo",tiempo)
     comidaRandom();
-    graficarGato();
-    graficarComida();
-    restarTiempo();
+    limpiarTiempo=setInterval(restarTiempo,resTiempo)
 }
 
 //LLamar funciones 
@@ -70,6 +69,8 @@ function limpiarCanvas(){
 //Mover el gato a la izquierda
 
 function moverPersonajeIzquierda(){
+    if(tiempo <= 0 || puntaje >= 6){
+    return;}
     gatoX=Math.max(0,gatoX-10);
     dibujarObjetos();
     detectarColision(); 
@@ -78,6 +79,8 @@ function moverPersonajeIzquierda(){
 //mover el gato a la Derecha
 
 function moverPersonajeDerecha(){
+    if(tiempo <= 0 || puntaje >= 6){
+    return;}
     gatoX=Math.min(canvas.width-ancho_Gato,gatoX+10);
     dibujarObjetos();
     detectarColision(); 
@@ -86,6 +89,8 @@ function moverPersonajeDerecha(){
 //Mover gato hacia arriba
 
 function moverPersonajeArriba(){
+    if(tiempo <= 0 || puntaje >= 6){
+    return;}
     gatoY=Math.max(0,gatoY-10);
     dibujarObjetos();
     detectarColision(); 
@@ -94,6 +99,8 @@ function moverPersonajeArriba(){
 //Mover gato hacia abajo
 
 function moverPersonajeAbajo(){
+    if(tiempo <= 0 || puntaje >= 6){
+    return;}
     gatoY=Math.min(canvas.height-alto_Gato,gatoY+10);
     dibujarObjetos();
     detectarColision();  
@@ -136,6 +143,20 @@ function restarTiempo(){
     }
 }
 
+//Reiniciar
+
+function reiniciarJuego(){
+    tiempo=10;
+    mostrarEnSpan("tiempo",tiempo);
+
+    puntaje=0;
+    mostrarEnSpan("puntos",puntaje);
+
+    gatoX = (canvas.width - ancho_Gato) / 2;
+    gatoY = canvas.height - alto_Gato;
+
+    iniciarJuego();
+}
 
 
     
