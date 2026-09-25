@@ -18,12 +18,20 @@ let comidaY=460;
 //Variables Puntaje y tiempo
 
 let puntaje=0;
+let tiempo=10;
+
+//Variable restar tiempo
+
+let resTiempo=1000;
+let limpiarTiempo;
 
 
 function iniciarJuego(){
+    limpiarTiempo=setInterval(restarTiempo,resTiempo)
     comidaRandom();
     graficarGato();
     graficarComida();
+    restarTiempo();
 }
 
 //LLamar funciones 
@@ -102,6 +110,10 @@ function detectarColision(){
         comidaRandom();
         puntaje=puntaje+1;
         mostrarEnSpan("puntos",puntaje)
+        if(puntaje===6){
+            clearInterval(limpiarTiempo);
+            alert("Ganaste!!")
+        }
     }
 }
 
@@ -112,5 +124,18 @@ function comidaRandom(){
     comidaY = generarAleatorio(0,canvas.height-alto_Comida)
     dibujarObjetos();
 }
+
+//Restar Tiempo
+
+function restarTiempo(){
+    tiempo=tiempo-1;
+    mostrarEnSpan("tiempo",tiempo)
+    if(tiempo===0){
+    clearInterval(limpiarTiempo)
+        alert("Perdiste :( !!")
+    }
+}
+
+
 
     
