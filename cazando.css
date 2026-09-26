@@ -1,42 +1,108 @@
-body {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background: #91ff87;
-  margin: 0;
-  padding: 20px;
+/* CAZANDO — colores suaves, formas redondas y una pequeña aventura felina. */
+:root {
+  --fondo: #f5f3e9;
+  --papel: #fffef8;
+  --tinta: #193c34;
+  --suave: #65746b;
+  --verde: #dce9b9;
+  --borde: #d9dece;
+  --naranja: #ed9867;
 }
-
-h1 {
-  margin-bottom: 5px;
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--tinta); background: var(--fondo); font-family: "Trebuchet MS", Arial, sans-serif; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.app { max-width: 1050px; margin: 0 auto; padding: 0 36px; }
+.cabecera { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--borde); }
+.marca { display: flex; align-items: center; gap: 9px; text-decoration: none; color: inherit; font-size: 18px; font-weight: 900; letter-spacing: -1px; }
+.marca-icono { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: var(--tinta); color: var(--verde); font-size: 24px; }
+.marca-sub { font-size: 10px; letter-spacing: 2px; margin-left: 3px; font-weight: 600; }
+.etiqueta, .mini-etiqueta, .sobretitulo, .dato-nombre, .pie-numero { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; }
+.etiqueta { border: 1px solid var(--borde); border-radius: 30px; padding: 9px 13px; }
+.introduccion { display: flex; justify-content: space-between; align-items: end; gap: 30px; padding: 32px 0 25px; }
+.sobretitulo { color: var(--suave); margin: 0 0 9px; }
+h1 { font-size: clamp(42px, 6vw, 64px); line-height: 1; letter-spacing: -3px; margin: 0; }
+.punto { color: #d57c4e; }
+.descripcion { max-width: 315px; font-size: 14px; line-height: 1.6; margin: 0 0 3px; color: var(--suave); }
+.descripcion strong { font-weight: 400; color: var(--tinta); }
+.juego { display: grid; grid-template-columns: minmax(0, 566px) minmax(0, 1fr); gap: 24px; align-items: start; }
+.zona-juego { background: var(--tinta); padding: 20px; border-radius: 24px; box-shadow: 0 12px 30px #193c3410; }
+.panel { display: flex; justify-content: space-between; padding: 0 9px 19px; gap: 20px; color: var(--papel); }
+.dato { display: flex; align-items: center; gap: 11px; min-width: 95px; }
+.dato-icono { display: grid; place-items: center; color: var(--verde); background: #ffffff10; width: 40px; height: 40px; font-size: 25px; border: 1px solid #ffffff15; border-radius: 13px; }
+.reloj { color: #ffc59e; }
+.dato-nombre { display: block; color: #cedccb; font-size: 9px; margin-bottom: 3px; }
+#puntos, #tiempo { font-size: 29px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.unidad { font-size: 14px; color: #cedccb; }
+.marco-tablero { overflow: hidden; border-radius: 13px; border: 1px solid #c9d4b8; background: #edf1dc; }
+/* El tamaño interno sigue siendo 500 × 500; solo se adapta la visualización. */
+canvas { display: block; width: 100%; height: auto; aspect-ratio: 1; background-color: #edf1dc; background-image: linear-gradient(#193c3408 1px, transparent 1px), linear-gradient(90deg, #193c3408 1px, transparent 1px); background-size: 10% 10%; }
+.pie-tablero { display: flex; align-items: center; gap: 7px; color: #d4dfce; padding: 15px 2px 0; font-size: 10px; }
+.indicador { width: 6px; height: 6px; border-radius: 50%; background: var(--verde); }
+.pie-numero { margin-left: auto; font-size: 8px; letter-spacing: 1px; }
+.lateral { display: grid; gap: 16px; }
+.tarjeta { border: 1px solid var(--borde); border-radius: 22px; padding: 22px; background: var(--papel); }
+.historia { background: var(--verde); border-color: #d1dfac; overflow: hidden; }
+.mini-etiqueta { font-size: 9px; }
+h2 { margin: 0; font-size: 21px; letter-spacing: -.6px; }
+.tarjeta p { font-size: 13px; line-height: 1.6; color: #566851; margin: 8px 0 0; }
+.personajes { height: 141px; position: relative; max-width: 235px; margin: 0 auto; }
+/* Ilustraciones decorativas hechas en CSS, sin imágenes externas. */
+.gato { position: absolute; width: 110px; height: 120px; bottom: 7px; left: 17px; }
+.cabeza { position: absolute; z-index: 3; background: var(--tinta); width: 86px; height: 67px; border-radius: 35% 35% 44% 44%; left: 10px; top: 15px; }
+.oreja { position: absolute; top: 1px; width: 34px; height: 40px; background: var(--tinta); border-radius: 5px; z-index: 2; }
+.oreja-izq { left: 12px; transform: rotate(-14deg); }
+.oreja-der { left: 61px; transform: rotate(14deg); }
+.oreja::after { content: ""; position: absolute; width: 13px; height: 19px; background: #baae83; left: 10px; top: 9px; border-radius: 3px; }
+.ojo { position: absolute; width: 15px; height: 18px; background: #f6f1b7; border-radius: 50%; top: 23px; }
+.ojo::after { content: ""; position: absolute; width: 4px; height: 13px; border-radius: 50%; background: var(--tinta); top: 2px; left: 7px; }
+.ojo-izq { left: 18px; }.ojo-der { right: 18px; }
+.nariz { position: absolute; top: 44px; left: 39px; width: 9px; height: 6px; background: var(--naranja); border-radius: 3px 3px 6px 6px; }
+.bigote { position: absolute; top: 46px; width: 22px; height: 8px; border-top: 1px solid #b6c5a4; border-bottom: 1px solid #b6c5a4; }
+.bigote-izq { left: -7px; transform: rotate(8deg); }.bigote-der { right: -7px; transform: rotate(-8deg); }
+.cuerpo { position: absolute; z-index: 2; left: 26px; bottom: 0; width: 65px; height: 65px; background: var(--tinta); border-radius: 50% 50% 20% 20%; }
+.cuerpo::after { content: ""; position: absolute; top: 18px; left: 19px; width: 27px; height: 32px; border-radius: 50%; background: #476650; }
+.pata { position: absolute; bottom: -2px; z-index: 3; background: #294d40; width: 29px; height: 15px; border-radius: 10px; }.pata-izq { left: 20px; }.pata-der { left: 68px; }
+.cola { position: absolute; right: -15px; bottom: 2px; width: 43px; height: 64px; border: 13px solid var(--tinta); border-left-color: transparent; border-top-color: transparent; border-radius: 50%; transform: rotate(-20deg); }
+.pez { position: absolute; top: 55px; right: 9px; width: 58px; height: 34px; border: 2px solid #b96940; background: var(--naranja); border-radius: 50%; transform: rotate(-18deg); }
+.pez::before { content: ""; position: absolute; left: -18px; top: 4px; width: 24px; height: 24px; background: var(--naranja); clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.pez::after { content: ""; position: absolute; width: 9px; height: 15px; border-left: 2px solid #b96940; border-radius: 50%; top: 8px; right: 17px; }
+.ojo-pez { position: absolute; right: 8px; top: 11px; width: 5px; height: 5px; background: var(--tinta); border-radius: 50%; }
+.destello { position: absolute; top: 12px; right: 28px; font-size: 29px; color: #758a4d; }
+.titulo-controles { display: flex; align-items: center; justify-content: space-between; gap: 7px; }
+.titulo-controles h2 { font-size: 18px; }
+.cruceta { display: grid; grid-template-columns: repeat(3, 54px); grid-template-rows: repeat(2, 48px); gap: 7px; justify-content: center; margin: 19px 0 21px; }
+button { font: inherit; cursor: pointer; touch-action: manipulation; transition: background .15s, transform .15s, box-shadow .15s; }
+.cruceta button { border: 1px solid #d5dcca; border-bottom: 4px solid #c6ceba; border-radius: 12px; background: #f2f4e9; color: var(--tinta); font-size: 25px; font-weight: bold; }
+.arriba { grid-column: 2; grid-row: 1; }.izquierda { grid-column: 1; grid-row: 2; }.abajo { grid-column: 2; grid-row: 2; }.derecha { grid-column: 3; grid-row: 2; }
+button:hover { background: #e0e9c9; }
+button:active { transform: translateY(2px); }
+button:focus-visible, a:focus-visible { outline: 3px solid #c66e3e; outline-offset: 4px; }
+.reiniciar { display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; min-height: 44px; background: var(--tinta); color: var(--papel); border: 0; border-radius: 12px; font-size: 13px; font-weight: bold; }
+.reiniciar span { font-size: 23px; }.reiniciar:hover { background: #2e5946; }
+#mensaje { color: #91431f; font-size: 14px; text-align: center; font-weight: bold; overflow-wrap: anywhere; }
+#mensaje:empty { display: none; }
+.consejo { margin: 0; padding: 0 8px; color: var(--suave); font-size: 11px; line-height: 1.5; }.consejo span { color: #9b6d42; margin-right: 4px; }
+footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 28px; padding: 19px 0 25px; border-top: 1px solid var(--borde); color: var(--suave); font-size: 11px; }
+footer strong { color: var(--tinta); }
+@media (max-width: 800px) {
+  .app { padding: 0 22px; max-width: 640px; }
+  .juego { grid-template-columns: 1fr; gap: 18px; }
+  .lateral { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .tarjeta { padding: 18px; }
+  .consejo { grid-column: 1 / -1; }
+  .introduccion { align-items: start; }
+  .descripcion { max-width: 230px; font-size: 13px; }
+  .personajes { transform: scale(.85); transform-origin: center; }
 }
-
-.panel {
-  margin: 15px 0;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
+@media (max-width: 480px) {
+  .app { padding: 0 16px; }
+  .cabecera { padding: 19px 0; }.etiqueta { display: none; }
+  .introduccion { display: block; padding: 24px 0 20px; }
+  .descripcion { margin-top: 14px; max-width: 100%; }
+  .zona-juego { padding: 14px; border-radius: 20px; }
+  .panel { padding: 2px 2px 15px; }.pie-numero { display: none; }
+  .lateral { grid-template-columns: 1fr; }.historia { display: none; }
+  .cruceta { grid-template-columns: repeat(3, 60px); grid-template-rows: repeat(2, 50px); }
+  footer { flex-direction: column; gap: 7px; }
 }
-
-canvas {
-  background: white;
-  border: 2px solid black;
-}
-
-.controles {
-  margin-top: 20px;
-}
-
-button {
-  margin: 5px;
-  padding: 10px 16px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-#mensaje {
-  font-size: 20px;
-  font-weight: bold;
-  color: darkred;
-  margin-top: 15px;
-}
+@media (prefers-reduced-motion: reduce) { button { transition: none; } }

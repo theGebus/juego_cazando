@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#193c34">
+  <title>Cazando · La hora del gato</title>
+  <link rel="stylesheet" href="cazando.css">
+  <script src="utils.js"></script>
+</head>
+<body onload="iniciarJuego()">
+  <div class="app">
+    <header class="cabecera">
+      <a class="marca" href="cazando.html" aria-label="Cazando, inicio"><span class="marca-icono" aria-hidden="true">✦</span> GEBUS<span class="marca-sub">ARCADE</span></a>
+      <span class="etiqueta">UN GATO. MUCHA HAMBRE.</span>
+    </header>
+
+    <main>
+      <div class="introduccion">
+        <div><p class="sobretitulo">PEQUEÑAS AVENTURAS / 01</p><h1>Cazando<span class="punto">.</span></h1></div>
+        <p class="descripcion">La hora del gato.<br><strong>Atrapa la comida antes de que termine el tiempo.</strong></p>
+      </div>
+
+      <div class="juego">
+        <section class="zona-juego" aria-label="Tablero de juego">
+          <div class="panel">
+            <div class="dato"><span class="dato-icono" aria-hidden="true">✦</span><div><span class="dato-nombre">PUNTOS</span><span id="puntos">0</span></div></div>
+            <div class="dato"><span class="dato-icono reloj" aria-hidden="true">◷</span><div><span class="dato-nombre">TIEMPO</span><span id="tiempo">10</span><span class="unidad"> s</span></div></div>
+          </div>
+          <div class="marco-tablero">
+            <!-- Se conservan el ID y las dimensiones originales para la lógica del juego. -->
+            <canvas width="500" height="500" id="areaJuego" aria-label="Mueve al gato con los botones para atrapar la comida">Tu navegador necesita admitir Canvas para mostrar este juego.</canvas>
+          </div>
+          <div class="pie-tablero"><span class="indicador" aria-hidden="true"></span> Cada movimiento cuenta <span class="pie-numero">01 / CAZANDO</span></div>
+        </section>
+
+        <aside class="lateral" aria-label="Guía y controles">
+          <section class="tarjeta historia">
+            <span class="mini-etiqueta">CONOCE AL EQUIPO</span>
+            <div class="personajes" aria-hidden="true">
+              <div class="gato"><div class="oreja oreja-izq"></div><div class="oreja oreja-der"></div><div class="cabeza"><span class="ojo ojo-izq"></span><span class="ojo ojo-der"></span><span class="nariz"></span><span class="bigote bigote-izq"></span><span class="bigote bigote-der"></span></div><div class="cuerpo"></div><span class="pata pata-izq"></span><span class="pata pata-der"></span><span class="cola"></span></div>
+              <span class="destello">✧</span><div class="pez"><span class="ojo-pez"></span></div>
+            </div>
+            <h2>Instinto felino.</h2><p>Un gato curioso y su comida favorita. Tú eliges el camino.</p>
+          </section>
+
+          <section class="tarjeta controles" aria-label="Controles de movimiento">
+            <div class="titulo-controles"><h2>A mover las patas</h2><span aria-hidden="true">↗</span></div>
+            <p>Usa estos botones para moverte.</p>
+            <div class="cruceta">
+              <button class="arriba" type="button" onclick="moverPersonajeArriba();" aria-label="Mover arriba">↑</button>
+              <button class="izquierda" type="button" onclick="moverPersonajeIzquierda();" aria-label="Mover a la izquierda">←</button>
+              <button class="abajo" type="button" onclick="moverPersonajeAbajo();" aria-label="Mover abajo">↓</button>
+              <button class="derecha" type="button" onclick="moverPersonajeDerecha();" aria-label="Mover a la derecha">→</button>
+            </div>
+            <button class="reiniciar" type="button" onclick="reiniciarJuego();"><span aria-hidden="true">↻</span> Volver a jugar</button>
+            <p id="mensaje" role="status" aria-live="polite"></p>
+          </section>
+          <p class="consejo"><span aria-hidden="true">✦</span> Sigue la comida. Confía en tus reflejos.</p>
+        </aside>
+      </div>
+    </main>
+    <footer><span>Hecho por <strong>Diego Ortega</strong> / theGebus</span><span>Juega. Atrapa. Repite.</span></footer>
+  </div>
+  <script src="cazando.js"></script>
+</body>
+</html>
