@@ -3,8 +3,8 @@ let ctx=canvas.getContext("2d");
 
 //Poner las constantes de los objetos
 
-const alto_Gato=75;
-const ancho_Gato=50;
+const alto_Gato=100;
+const ancho_Gato=100;
 const alto_Comida=40;
 const ancho_Comida=40;
 
@@ -44,13 +44,13 @@ function dibujarObjetos(){
 //DIbujo de gato 
 
 function graficarGato(){
-    graficarRectangulo(gatoX,gatoY,ancho_Gato,alto_Gato,"black");
+    graficarRectangulo(gatoX,gatoY,ancho_Gato,alto_Gato,"orange");
 }
 
 //dibujo de comida del Gato
 
 function graficarComida(){
-    graficarRectangulo(comidaX,comidaY,ancho_Comida,alto_Comida,"orange")
+    graficarRectangulo(comidaX,comidaY,ancho_Comida,alto_Comida,"black")
 }
 
 //Creo una funcion para graficar rectangulos
@@ -139,7 +139,7 @@ function restarTiempo(){
     mostrarEnSpan("tiempo",tiempo)
     if(tiempo===0){
     clearInterval(limpiarTiempo)
-        alert("Perdiste :( !!")
+        alert("Pruba Perder")
     }
 }
 
@@ -158,5 +158,11 @@ function reiniciarJuego(){
     iniciarJuego();
 }
 
+
+//desaparecer personaje
+
+function desaparecerPersonaje(){
+    ctx.clearRect(0,0,canvas.width,canvas.height)
+}
 
     
