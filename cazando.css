@@ -106,3 +106,6 @@ footer strong { color: var(--tinta); }
   footer { flex-direction: column; gap: 7px; }
 }
 @media (prefers-reduced-motion: reduce) { button { transition: none; } }
+
+/* Botón para detener la partida y limpiar el tablero. */
+.clean { width: 100%; padding: 10px; margin-top: 8px; border: 1px solid var(--borde); border-radius: 12px; background: var(--papel); color: var(--tinta); }

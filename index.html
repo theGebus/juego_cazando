@@ -11,7 +11,7 @@
 <body onload="iniciarJuego()">
   <div class="app">
     <header class="cabecera">
-      <a class="marca" href="cazando.html" aria-label="Cazando, inicio"><span class="marca-icono" aria-hidden="true">✦</span> GEBUS<span class="marca-sub">ARCADE</span></a>
+      <a class="marca" href="index.html" aria-label="Cazando, inicio"><span class="marca-icono" aria-hidden="true">✦</span> GEBUS<span class="marca-sub">ARCADE</span></a>
       <span class="etiqueta">UN GATO. MUCHA HAMBRE.</span>
     </header>
 
@@ -46,7 +46,7 @@
 
           <section class="tarjeta controles" aria-label="Controles de movimiento">
             <div class="titulo-controles"><h2>A mover las patas</h2><span aria-hidden="true">↗</span></div>
-            <p>Usa estos botones para moverte.</p>
+            <p>Usa los botones o las flechas del teclado. Atrapa 6 peces en 10 segundos.</p>
             <div class="cruceta">
               <button class="arriba" type="button" onclick="moverPersonajeArriba();" aria-label="Mover arriba">↑</button>
               <button class="izquierda" type="button" onclick="moverPersonajeIzquierda();" aria-label="Mover a la izquierda">←</button>
@@ -54,7 +54,7 @@
               <button class="derecha" type="button" onclick="moverPersonajeDerecha();" aria-label="Mover a la derecha">→</button>
             </div>
             <button class="reiniciar" type="button" onclick="reiniciarJuego();"><span aria-hidden="true">↻</span> Volver a jugar</button>
-            <button class="clean" type="button" onclick="desaparecerPersonaje();"><span aria-hidden="true">↻</span> LimpiarP</button>
+            <button class="clean" type="button" onclick="desaparecerPersonaje();"><span aria-hidden="true">↻</span> Limpiar tablero</button>
             <p id="mensaje" role="status" aria-live="polite"></p>
           </section>
           <p class="consejo"><span aria-hidden="true">✦</span> Sigue la comida. Confía en tus reflejos.</p>
