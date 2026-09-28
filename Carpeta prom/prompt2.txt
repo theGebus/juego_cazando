@@ -1,0 +1,1 @@
+Ponte en modo Diseñador y pon el logotipo que guardaste en tu base de datos llamada "Logo-oficial-theGebus.png  "  ponle alado de mi nombre "Gebus"

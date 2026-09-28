@@ -14,7 +14,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .app { max-width: 1050px; margin: 0 auto; padding: 0 36px; }
 .cabecera { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--borde); }
 .marca { display: flex; align-items: center; gap: 9px; text-decoration: none; color: inherit; font-size: 18px; font-weight: 900; letter-spacing: -1px; }
-.marca-icono { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: var(--tinta); color: var(--verde); font-size: 24px; }
+/* Logotipo original junto al nombre, sin deformarlo ni recortarlo. */
+.marca-logo { display: block; width: 80px; height: 80px; object-fit: contain; flex-shrink: 0; border-radius: 14px; border: 1px solid var(--borde); }
+
 .marca-sub { font-size: 10px; letter-spacing: 2px; margin-left: 3px; font-weight: 600; }
 .etiqueta, .mini-etiqueta, .sobretitulo, .dato-nombre, .pie-numero { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; }
 .etiqueta { border: 1px solid var(--borde); border-radius: 30px; padding: 9px 13px; }
@@ -109,3 +111,7 @@ footer strong { color: var(--tinta); }
 
 /* Botón para detener la partida y limpiar el tablero. */
 .clean { width: 100%; padding: 10px; margin-top: 8px; border: 1px solid var(--borde); border-radius: 12px; background: var(--papel); color: var(--tinta); }
+
+@media (max-width: 480px) {
+  .marca-logo { width: 64px; height: 64px; border-radius: 11px; }
+}
